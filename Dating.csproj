@@ -5,12 +5,46 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="client\ssl\.git\config" />
+    <None Include="client\ssl\.git\description" />
+    <None Include="client\ssl\.git\HEAD" />
+    <None Include="client\ssl\.git\hooks\applypatch-msg.sample" />
+    <None Include="client\ssl\.git\hooks\commit-msg.sample" />
+    <None Include="client\ssl\.git\hooks\fsmonitor-watchman.sample" />
+    <None Include="client\ssl\.git\hooks\post-update.sample" />
+    <None Include="client\ssl\.git\hooks\pre-applypatch.sample" />
+    <None Include="client\ssl\.git\hooks\pre-commit.sample" />
+    <None Include="client\ssl\.git\hooks\pre-merge-commit.sample" />
+    <None Include="client\ssl\.git\hooks\pre-push.sample" />
+    <None Include="client\ssl\.git\hooks\pre-rebase.sample" />
+    <None Include="client\ssl\.git\hooks\pre-receive.sample" />
+    <None Include="client\ssl\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="client\ssl\.git\hooks\push-to-checkout.sample" />
+    <None Include="client\ssl\.git\hooks\update.sample" />
+    <None Include="client\ssl\.git\index" />
+    <None Include="client\ssl\.git\info\exclude" />
+    <None Include="client\ssl\.git\logs\HEAD" />
+    <None Include="client\ssl\.git\logs\refs\heads\master" />
+    <None Include="client\ssl\.git\logs\refs\remotes\origin\HEAD" />
+    <None Include="client\ssl\.git\objects\pack\pack-1c2d2d45151263feb0ad8f6445d58bfd54730c44.idx" />
+    <None Include="client\ssl\.git\objects\pack\pack-1c2d2d45151263feb0ad8f6445d58bfd54730c44.pack" />
+    <None Include="client\ssl\.git\packed-refs" />
+    <None Include="client\ssl\.git\refs\heads\master" />
+    <None Include="client\ssl\.git\refs\remotes\origin\HEAD" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="client\ssl\.git\objects\info\" />
+    <Folder Include="client\ssl\.git\refs\tags\" />
   </ItemGroup>
 
 </Project>
