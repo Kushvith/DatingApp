@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="client\src\app\_models\User.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="client\ssl\.git\config" />
     <None Include="client\ssl\.git\description" />
     <None Include="client\ssl\.git\HEAD" />
@@ -45,8 +49,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="client\src\app\_services\" />
     <Folder Include="client\ssl\.git\objects\info\" />
     <Folder Include="client\ssl\.git\refs\tags\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="client\src\app\_models\User.ts" />
   </ItemGroup>
 
 </Project>
