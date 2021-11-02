@@ -12,7 +12,7 @@ import { AccountService } from '../_services/account.service';
 export class NavbarComponent implements OnInit {
   model: any = {};
   loggedIn: Boolean;
-  isCollapsed = false;
+  isCollapsed = true;
   constructor(public Accountservice: AccountService) { }
   
   ngOnInit(): void {
