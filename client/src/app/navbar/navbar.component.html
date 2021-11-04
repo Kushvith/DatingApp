@@ -1,26 +1,26 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" style="justify-content:space-between">
-  <a class="navbar-brand" href="#">Dating App</a>
+  <a class="navbar-brand" routerLink="/" routerLinkActive="active">Dating App</a>
   <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic" data-toggle="collapse" data-target="#navbarCollapse"  aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" d="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true" id="navbarCollapse">
     <ul class="navbar-nav mr-auto" >
       <ng-container *ngIf="Accountservice.userobservable$ | async">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Matchs</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="members" routerLinkActive="active">Matchs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Lists</a>
+          <a class="nav-link" routerLink="lists"  routerLinkActive="active">Lists</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Messages</a>
+          <a class="nav-link" routerLink="messages"  routerLinkActive="active">Messages</a>
         </li>
       </ng-container>
     </ul>
     <div class="btn-group" dropdown [insideClick]="true" *ngIf="(Accountservice.userobservable$ | async) as user">
       <button dropdownToggle type="button" class="btn btn-default text-white dropdown-toggle">
-        welcome {{user.username}}
+        welcome {{user.username | titlecase}}
       </button>
       <ul *dropdownMenu class="dropdown-menu" role="menu">
         <li role="menuitem"><a class="dropdown-item" href="#">Edit profile</a></li>
@@ -38,6 +38,6 @@
   </div>
 </nav>
 <div class="container" style="margin-top:100px">
-  <app-home></app-home>
+  <router-outlet></router-outlet>
 </div>
 
