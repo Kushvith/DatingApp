@@ -49,6 +49,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="client\src\app\Errors\" />
+    <Folder Include="client\src\app\_interceptor\" />
     <Folder Include="client\src\app\_services\" />
     <Folder Include="client\ssl\.git\objects\info\" />
     <Folder Include="client\ssl\.git\refs\tags\" />

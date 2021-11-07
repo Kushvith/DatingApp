@@ -5,18 +5,21 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" d="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto" >
+    <ul class="navbar-nav mr-auto">
       <ng-container *ngIf="Accountservice.userobservable$ | async">
         <li class="nav-item">
           <a class="nav-link" routerLink="members" routerLinkActive="active">Matchs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="lists"  routerLinkActive="active">Lists</a>
+          <a class="nav-link" routerLink="lists" routerLinkActive="active">Lists</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="messages"  routerLinkActive="active">Messages</a>
+          <a class="nav-link" routerLink="messages" routerLinkActive="active">Messages</a>
         </li>
       </ng-container>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="errors" routerLinkActive="active">Errors</a>
+      </li>
     </ul>
     <div class="btn-group" dropdown [insideClick]="true" *ngIf="(Accountservice.userobservable$ | async) as user">
       <button dropdownToggle type="button" class="btn btn-default text-white dropdown-toggle">

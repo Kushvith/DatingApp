@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,6 +17,10 @@ import { MemberDetailsComponent } from './members/member-details/member-details.
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { SharedModule } from './_modules/shared.module';
+import { TestsErrorComponent } from './Errors/tests-error/tests-error.component';
+import { AuthInterceptor } from './_interceptor/auth.interceptor';
+import { NotFoundComponent } from './Errors/not-found/not-found.component';
+import { InternalServerComponent } from './Errors/internal-server/internal-server.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,10 @@ import { SharedModule } from './_modules/shared.module';
     MemberListsComponent,
     MemberDetailsComponent,
     ListsComponent,
-    MessagesComponent
+    MessagesComponent,
+    TestsErrorComponent,
+    NotFoundComponent,
+    InternalServerComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,9 @@ import { SharedModule } from './_modules/shared.module';
     FormsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
