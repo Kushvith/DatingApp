@@ -1,4 +1,7 @@
-﻿using Dating.Data;
+﻿using AutoMapper;
+using Dating.Data;
+using Dating.DTOs;
+using Dating.Interfsces;
 using Dating.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -11,14 +14,16 @@ using System.Threading.Tasks;
 
 namespace Dating.Controllers
 {
-   [Authorize]
     public class UsersController : BaseApiController
     {
-        private readonly Datacontext _context;
+        private readonly IUserRepository _repo;
+        private readonly IMapper _mapper;
 
-        public UsersController(Datacontext context)
+        public UsersController(IUserRepository repo,IMapper mapper)
         {
-            _context = context;
+ 
+            _repo = repo;
+            _mapper = mapper;
         }
 
         //public async Task<ActionResult<AppUser>> adduser()
@@ -28,15 +33,16 @@ namespace Dating.Controllers
         //    await _context.SaveChangesAsync();
         //    return user;
         //}
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<MemberDtos>>> GetUsers()
         {
-            var users = await _context.Users.ToListAsync();
-            return users;
+            var users = await _repo.getMembers();
+            return Ok(users);
         }
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AppUser>> GetUser(int id)
+        [HttpGet("{username}")]
+        public async Task<ActionResult<MemberDtos>> GetUser(string username)
         {
-            return await _context.Users.FindAsync(id);
+            var user =  await _repo.getMember(username);
+            return user;
         }
     }
 }
