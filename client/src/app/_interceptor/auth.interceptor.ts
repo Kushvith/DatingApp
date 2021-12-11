@@ -26,6 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
                 for (const key in err.error.errors) {
                   modalStateError.push(key);
                 }
+                this.toastr.error()
                 throw modalStateError;
               }
               else {
@@ -36,12 +37,14 @@ export class AuthInterceptor implements HttpInterceptor {
               this.router.navigateByUrl("/not-found");
               break;
             case 401:
-              this.toastr.error(err.status, err.statusText);
+              this.toastr.error(err.status, err.error);
               break;
             case 500:
               const navitionExtras: NavigationExtras = { state: { error: err.error } }
               this.router.navigateByUrl("/server-error", navitionExtras);
               break;
+            case 200:
+              this.toastr.success(err.status, err.statusText);
             default:
               this.toastr.error("something went wrong");
               break;

@@ -48,7 +48,7 @@ namespace Dating.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<userDto>> login(loginDto loginDto)
         {
-            var user = await _datacontext.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.username);
+            var user = await _datacontext.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.username.ToLower());
             if (user == null) return Unauthorized("Invalid user");
             using var hmac = new HMACSHA512(user.PasswordSalt);
             var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.password));

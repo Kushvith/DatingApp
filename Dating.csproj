@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="client\src\app\_models\Member.ts" />
+    <None Remove="client\src\app\_models\photo.ts" />
     <None Remove="client\src\app\_models\User.ts" />
   </ItemGroup>
 
@@ -58,6 +60,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="client\src\app\_models\Member.ts" />
+    <TypeScriptCompile Include="client\src\app\_models\photo.ts" />
     <TypeScriptCompile Include="client\src\app\_models\User.ts" />
   </ItemGroup>
 

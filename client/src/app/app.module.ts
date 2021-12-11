@@ -21,6 +21,8 @@ import { TestsErrorComponent } from './Errors/tests-error/tests-error.component'
 import { AuthInterceptor } from './_interceptor/auth.interceptor';
 import { NotFoundComponent } from './Errors/not-found/not-found.component';
 import { InternalServerComponent } from './Errors/internal-server/internal-server.component';
+import { JwtInterceptor } from './_interceptor/jwt.interceptor';
+import { MemberCardComponent } from './members/member-card/member-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import { InternalServerComponent } from './Errors/internal-server/internal-serve
     MessagesComponent,
     TestsErrorComponent,
     NotFoundComponent,
-    InternalServerComponent
+    InternalServerComponent,
+    MemberCardComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { InternalServerComponent } from './Errors/internal-server/internal-serve
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
