@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Dating.Controllers
@@ -44,6 +45,15 @@ namespace Dating.Controllers
         {
             var user =  await _repo.getMember(username);
             return user;
+        }
+        [HttpPut]
+        public async Task<ActionResult> update(MemberEditDto memberEditDto)
+        {
+            var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var user = await _repo.GetUserByUserNameAsync(username);
+            _mapper.Map(memberEditDto, user);
+            if (await _repo.SaveChangesAsync()) return NoContent();
+            return BadRequest("failed to update");
         }
     }
 }

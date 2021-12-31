@@ -1,0 +1,68 @@
+<div class="row" *ngIf="member">
+<div class="col-lg-4 small">
+  <h1>Profile</h1>
+</div>
+  <div class="col-lg-8 col-sm-12">
+    <div class="alert alert-warning" *ngIf="editForm.dirty">You have not saved the changes. if you don't  you loose the data</div>
+  </div>
+  <div class="col-lg-4 col-sm-1 border-1">
+    <div class="card">
+      <img src="{{member.photoUrl ||'../assests/user.png' }}" alt="{{member.knownas}}" class="card-img-top img-thumbnail" />
+      <div class="card-body">
+        <div>
+          <strong>Location:</strong>
+          <p>{{member.country}},{{member.city}}</p>
+        </div>
+        <div>
+          <strong>Age:</strong>
+          <p>{{member.age}}</p>
+        </div>
+        <div>
+          <strong>Member since:</strong>
+          <p>{{member.created}}</p>
+        </div>
+        <div>
+          <strong>Last Active:</strong>
+          <p>{{member.lastActive}}</p>
+        </div>
+      </div>
+      <div class="card-footer mb-2  button-long">
+          <button type="submit" class="btn btn-primary form-control"
+                  form="editForm"
+                  [disabled]="!editForm.dirty"
+                  tooltip="save changes"
+                  [adaptivePosition]="false"
+                  placement="top"
+                  Tooltip on top >
+            Save Changes
+          </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <tabset #staticTabs class="member-tabset">
+      <tab heading="{{member.knownas}}" class="p-3 mt-2">
+        <form #editForm="ngForm" id="editForm" (ngSubmit)="update()">
+          <h4>Description:</h4>
+          <textarea class="form-control ml-sm-2" placeholder="Description" name="lookingFor" [(ngModel)]="member.lookingFor" rows="6"></textarea>
+          <h4>Introduction:</h4>
+          <textarea class="form-control ml-sm-2" placeholder="Introduction" name="introduction" [(ngModel)]="member.introduction" rows="6"></textarea>
+          <h4>Interests:</h4>
+          <textarea class="form-control ml-sm-2" placeholder="Interests" name="interests" [(ngModel)]="member.interests" rows="6"></textarea>
+          <div class="form-inline">
+            <label for="city" class="mt-1">City:</label><input type="text" [(ngModel)]="member.city" name="city" placeholder="City" class="form-control mx-2 mt-3" />
+            <label class="mt-1">Country:</label><input type="text" [(ngModel)]="member.country" name="country" placeholder="Country" class="form-control mx-2 mt-3" />
+          </div>
+          <div class="offset-4 mt-2 button-short">
+            <button class="btn btn-primary" type="submit" [disabled]="!editForm.dirty">Save</button>
+          </div>
+
+        </form>
+        
+      </tab>
+      <tab heading="Edit Photos" class="p-1 mt-2">
+        <p>photos</p>
+      </tab>
+    </tabset>
+  </div>
+</div>

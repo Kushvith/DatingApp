@@ -1,0 +1,44 @@
+.img-thumbnail {
+  margin: 25px;
+  width: 85%;
+  height: 80%;
+  cursor: pointer;
+}
+
+.card-body {
+  padding: 5px 25px;
+}
+
+.card-footer {
+  color: white;
+  background-color: #fff;
+  border-top: none;
+  padding: 0 15px;
+  align-items:center;
+}
+
+.ngx-gallery {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.button-short{
+    opacity:0;
+}
+.button-long {
+  opacity: 1;
+}
+
+@media (max-width:990px){
+    .button-long{
+        opacity:0;
+    }
+  .button-short {
+    opacity: 1;
+  }
+  .card {
+    display: none;
+  }
+  .small{
+      display:none;
+  }
+}

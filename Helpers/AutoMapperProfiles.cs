@@ -17,6 +17,7 @@ namespace Dating.Helpers
                 .ForMember(dest => dest.PhotoUrl,opt => opt.MapFrom(src => src.Photos.FirstOrDefault(x => x.Ismain).Url))
                 .ForMember(dest => dest.Age,opt => opt.MapFrom(src => src.DateOfBirth.calculateAge()));
             CreateMap<photo, photoDto>();
+            CreateMap<MemberEditDto, AppUser>();
         }
     }
 }

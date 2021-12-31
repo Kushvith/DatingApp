@@ -19,7 +19,7 @@ export class MemberDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.galleryOptions = [
       {
-        width: '500px',
+        width: '300px',
         height: '500px',
         imagePercent: 100,
         thumbnailsColumns: 4,
