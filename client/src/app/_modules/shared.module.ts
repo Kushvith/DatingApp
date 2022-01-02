@@ -6,7 +6,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
-
+import { FileUploadModule } from 'ng2-file-upload'
 @NgModule({
   declarations: [],
   imports: [
@@ -19,7 +19,8 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
       }),
     TooltipModule.forRoot(),
     TabsModule.forRoot(),
-NgxGalleryModule
+    NgxGalleryModule,
+    FileUploadModule
   ],
   exports: [
     CollapseModule,
@@ -27,7 +28,8 @@ NgxGalleryModule
     ToastrModule,
     TooltipModule,
     TabsModule,
- NgxGalleryModule
+    NgxGalleryModule,
+    FileUploadModule
   ]
 })
 export class SharedModule { }

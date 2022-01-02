@@ -31,6 +31,7 @@ namespace Dating.Extensions
             services.AddScoped<Itoken, TokenService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(Helpers.AutoMapperProfiles).Assembly);
+            services.AddScoped<IPhoto, PhotoService>();
             return services;
         }
     }

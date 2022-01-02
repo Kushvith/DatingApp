@@ -29,9 +29,15 @@ export class MemberService {
       })
     );
   }
+  getSetMain(photoid) {
+    return this.http.put(this.baseUrl + "Users/set-main/" + photoid, {});
+  }
+  getDelete(photoid) {
+    return this.http.delete(this.baseUrl + "Users/delete-photo/" + photoid);
+  }
   getMember(username: string) {
     const member = this.member.find(x => x.userName == username);
-    if (this.member != undefined) return of(member)
+    if (member !== undefined) return of(member);
     return this.http.get<Member>(this.baseUrl + "Users/" + username)
   }
   memberEdit(member) {

@@ -48,7 +48,7 @@ namespace Dating.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<userDto>> login(loginDto loginDto)
         {
-            var user = await _datacontext.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.username.ToLower());
+            var user = await _datacontext.Users.Include(x=> x.Photos).SingleOrDefaultAsync(x => x.UserName == loginDto.username.ToLower());
             if (user == null) return Unauthorized("Invalid user");
             using var hmac = new HMACSHA512(user.PasswordSalt);
             var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.password));
@@ -56,10 +56,11 @@ namespace Dating.Controllers
             {
                 if (hash[i] != user.passwordHash[i]) return Unauthorized("Invalid password");
             }
-        return new userDto()
-        {
-            username = user.UserName,
-            Token = _itoken.createToken(user)
+            return new userDto()
+            {
+                username = user.UserName,
+                Token = _itoken.createToken(user),
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.Ismain)?.Url
     };
 }
         private async Task<bool> ExistsUser(string username)

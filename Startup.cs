@@ -1,5 +1,6 @@
 using Dating.Data;
 using Dating.Extensions;
+using Dating.Helpers;
 using Dating.Interfsces;
 using Dating.MiddleWare;
 using Dating.services;
@@ -37,6 +38,7 @@ namespace Dating
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CloudinarySettings>(_config.GetSection("CloudinarySettings"));
             services.AddApplicationServies(_config);
             services.AddSystemservices(_config);
         }

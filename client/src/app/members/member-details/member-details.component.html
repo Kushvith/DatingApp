@@ -1,7 +1,9 @@
+<p class="old" (click)="change()" [ngClass]="{'old': toggle,'new':!toggle}">toggle</p>
 <div class="row" *ngIf="member">
-  <div class="col-lg-4 col-sm-12 border-1">
+  <div class="col-lg-4 col-md-8 col-sm-12 border-1 small-screen" *ngIf="toggle">
     <div class="card">
       <img src="{{member.photoUrl ||'../assests/user.png' }}" alt="{{member.knownas}}" class="card-img-top img-thumbnail" />
+      <p class="close">close</p>
       <div class="card-body">
         <div>
           <strong>Location:</strong>

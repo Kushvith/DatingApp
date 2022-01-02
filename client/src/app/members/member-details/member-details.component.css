@@ -18,3 +18,23 @@
   display: inline-block;
   margin-bottom: 20px;
 }
+
+.old{
+    display:none;
+}
+@media (max-width:990px){
+  .old {
+    display: block;
+    color: green;
+  }
+
+  .new {
+    display: block;
+    color: red;
+  }
+  .small-screen{
+      position:absolute;
+      overflow:hidden;
+      z-index:1000;
+  }
+}

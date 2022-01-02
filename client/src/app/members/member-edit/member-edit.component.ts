@@ -19,15 +19,17 @@ export class MemberEditComponent implements OnInit {
       $event.returnValue = true;
     }
   }
-  member: Member
-  user: User
+  member: Member;
+  user: User;
   constructor(private account: AccountService, private memberService: MemberService,private toastr:ToastrService) {
     this.account.userobservable$.pipe(take(1)).subscribe(user => this.user = user);
+    
   }
 
   ngOnInit(): void {
     this.memberService.getMember(this.user.username).subscribe(member => this.member = member);
   }
+ 
   update() {
     this.memberService.memberEdit(this.member).subscribe(() => {
       this.toastr.success("updated sucessfully")

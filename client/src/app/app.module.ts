@@ -26,6 +26,7 @@ import { MemberCardComponent } from './members/member-card/member-card.component
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BusyInterceptor } from './_interceptor/busy.interceptor';
+import { MemberPhotosComponent } from './members/member-photos/member-photos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { BusyInterceptor } from './_interceptor/busy.interceptor';
     NotFoundComponent,
     InternalServerComponent,
     MemberCardComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    MemberPhotosComponent
   ],
   imports: [
     BrowserModule,

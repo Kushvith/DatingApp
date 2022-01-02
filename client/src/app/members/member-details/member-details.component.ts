@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Member } from '../../_models/Member';
 import { MemberService } from '../../_services/member.service';
@@ -14,6 +14,11 @@ export class MemberDetailsComponent implements OnInit {
   member: Member
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  toggle: Boolean = true;
+  srcwidth: any;
+  @HostListener('window:resize', ['$event']) getscreensize(event?) {
+    this.srcwidth = window.innerWidth;
+  }
   constructor(private memberservice: MemberService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,13 +31,24 @@ export class MemberDetailsComponent implements OnInit {
         imageAnimation: NgxGalleryAnimation.Slide,
         preview: false
       }];
-
-  
-    
     this.getMember();
+    this.getscreensize();
+    this.getsmall();
+  }
+  getsmall() {
+    if (this.srcwidth < 990) {
+      this.toggle = false;
+    }
+  }
+  change() {
+    if (this.srcwidth < 990) {
+      this.toggle = !this.toggle;
+    }
+    
   }
   getMember() {
-    this.memberservice.getMember(this.route.snapshot.paramMap.get("username")).subscribe(member => { this.member = member; this.galleryImages = this.getImages(); })
+    this.memberservice.getMember(this.route.snapshot.paramMap.get("username")).subscribe(member =>
+    { this.member = member; this.galleryImages = this.getImages(); })
   }
   getImages(): NgxGalleryImage[] {
     const imgUrl = [];
