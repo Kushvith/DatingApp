@@ -60,8 +60,13 @@ export class MemberPhotosComponent implements OnInit {
     }
     this.uploader.onSuccessItem = (item, response, status, headers)=>{
       if (response) {
-        const photo = JSON.parse(response);
+        const photo:Photo= JSON.parse(response);
         this.member.photos.push(photo);
+        if (photo.ismain) {
+          this.member.photoUrl = photo.url
+          this.user.photoUrl = photo.url
+          this.accountservice.setCurrentUser(this.user)
+        }
       }
     }
   }

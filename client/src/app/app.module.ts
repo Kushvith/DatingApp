@@ -6,8 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FormsModule } from '@angular/forms';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -27,6 +26,8 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BusyInterceptor } from './_interceptor/busy.interceptor';
 import { MemberPhotosComponent } from './members/member-photos/member-photos.component';
+import { InputComponentComponent } from './_forms/input-component/input-component.component';
+import { InputDatepickerComponent } from './_forms/input-datepicker/input-datepicker.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +43,9 @@ import { MemberPhotosComponent } from './members/member-photos/member-photos.com
     InternalServerComponent,
     MemberCardComponent,
     MemberEditComponent,
-    MemberPhotosComponent
+    MemberPhotosComponent,
+    InputComponentComponent,
+    InputDatepickerComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { MemberPhotosComponent } from './members/member-photos/member-photos.com
     BrowserAnimationsModule,
     FormsModule,
     SharedModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

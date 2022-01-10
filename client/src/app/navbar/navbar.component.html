@@ -22,7 +22,7 @@
       </li>
     </ul>
     <div class="btn-group" dropdown [insideClick]="true" *ngIf="(Accountservice.userobservable$ | async) as user">
-      <img src="{{user.photoUrl}}" alt="{{user.username}}"/>
+      <img src="{{user.photoUrl || '../../assets/user.png'}}" alt="{{user.username}}"/>
       <button dropdownToggle type="button" class="btn btn-default text-white dropdown-toggle">
         welcome {{user.username | titlecase}}
       </button>

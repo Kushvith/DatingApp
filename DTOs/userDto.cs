@@ -10,5 +10,6 @@ namespace Dating.DTOs
         public string username { get; set; }
         public string Token { get; set; }
         public string PhotoUrl { get; set; }
+        public string Knownas { get; set; }
     }
 }

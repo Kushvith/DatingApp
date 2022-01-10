@@ -87,7 +87,7 @@ namespace Dating.Controllers
             var user = await _repo.GetUserByUserNameAsync(User.getuser());
             var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
             if (photo.Ismain) return BadRequest("this your main photo");
-            var current = user.Photos.FirstOrDefault(x => x.Ismain);
+            var current = user.Photos.FirstOrDefault(x => x.Ismain == true);
             current.Ismain = false;
             photo.Ismain = true;
             if (await _repo.SaveChangesAsync()) return NoContent();
@@ -97,7 +97,7 @@ namespace Dating.Controllers
         public async Task<ActionResult> deletephoto(int photoId)
         {
             var user = await _repo.GetUserByUserNameAsync(User.getuser());
-            var photo = user.Photos.FirstOrDefault(x => x.Id != photoId);
+            var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
             if (photo == null) return NotFound();
             if (photo.Ismain) return BadRequest("this main photo");
             if(photo.PublicId != null)
